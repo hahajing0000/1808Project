@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">1808ZG6</string>
+    <string name="main_username">请输入用户名</string>
+    <string name="main_pwd">请输入密码</string>
 </resources>
