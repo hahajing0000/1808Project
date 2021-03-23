@@ -4,19 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.zy.zg6.databinding.ActivityMainBinding;
+import com.zy.zg6.observer.MyObserver;
+import com.zy.zg6.observer.MyService;
+import com.zy.zg6.observer.ObserverManager;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyObserver {
     private EditText etUsername;
     private EditText etPwd;
     private Button btnLogin;
+
+    private ViewStub vsTest;
+
 
 
 
@@ -24,9 +33,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
+
+        ObserverManager.getInstance().registerObserver(this);
+
         ActivityMainBinding viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         UserEntity userEntity=new UserEntity();
+        userEntity.setAge(20);
         userEntity.setName("小米");
         userEntity.setAddress("北京海淀");
 
@@ -49,21 +62,37 @@ public class MainActivity extends AppCompatActivity {
         initEvent();
     }
 
-    private void initEvent() {
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username=etUsername.getText().toString().trim();
-                String pwd=etPwd.getText().toString().trim();
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        startService(new Intent(this, MyService.class));
+    }
 
-                Toast.makeText(MainActivity.this,"用户："+username+" 密码:"+pwd,Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void initEvent() {
+//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String username=etUsername.getText().toString().trim();
+//                String pwd=etPwd.getText().toString().trim();
+//
+//                Toast.makeText(MainActivity.this,"用户："+username+" 密码:"+pwd,Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
     }
 
     private void initView() {
         etUsername = (EditText) findViewById(R.id.et_username);
         etPwd = (EditText) findViewById(R.id.et_pwd);
         btnLogin = (Button) findViewById(R.id.btn_login);
+
+        //vsTest.inflate();
+
+        //vsTest.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void notifyMsg(Object... objects) {
+        Log.d("123","收到消息:"+objects[0].toString());
     }
 }
