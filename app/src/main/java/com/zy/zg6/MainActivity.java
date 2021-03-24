@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zy.zg6.databinding.ActivityMainBinding;
@@ -78,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements MyObserver {
 //                Toast.makeText(MainActivity.this,"用户："+username+" 密码:"+pwd,Toast.LENGTH_SHORT).show();
 //            }
 //        });
+
+//        TextView textView=new TextView(this);
 
     }
 

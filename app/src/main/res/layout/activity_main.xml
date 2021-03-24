@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:xiaoming="http://schemas.android.com/apk/res-auto"
    >
     <data>
         <import type="android.view.View"></import>
@@ -36,12 +36,21 @@
             android:layout_height="wrap_content"></EditText>
 
 
+
         <Button
             android:id="@+id/btn_login"
             android:text="登录"
             android:onClick="@{()->user.userOnClick(user2)}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Button>
+
+        <com.zy.zg6.CustomView
+            android:padding="10dp"
+            android:background="@color/colorPrimaryDark"
+            xiaoming:customtype="0"
+            xiaoming:customcolor="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.zy.zg6.CustomView>
     </LinearLayout>
 
 
