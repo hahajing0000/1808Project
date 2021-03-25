@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <EditText
-            android:text="@{source.tempName}"
+            android:text="@{viewmodel.dataSource.phoneNumber}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></EditText>
         <Button

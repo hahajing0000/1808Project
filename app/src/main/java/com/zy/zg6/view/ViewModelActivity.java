@@ -17,7 +17,7 @@ import com.zy.zg6.entity.UserEntity;
 import com.zy.zg6.viewmodel.MyViewModel;
 
 public class ViewModelActivity extends AppCompatActivity {
-    public ObservableField<String> tempName=new ObservableField<>();
+//    public ObservableField<String> tempName=new ObservableField<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,13 +26,14 @@ public class ViewModelActivity extends AppCompatActivity {
         MyViewModel myViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(MyViewModel.class);
         mvm.setViewmodel(myViewModel);
         mvm.setSource(this);
+        mvm.setLifecycleOwner(this);
 
         myViewModel.getDataSource().observe(this, new Observer<ReqLoginUser>() {
             @Override
             public void onChanged(ReqLoginUser userEntity) {
                 Log.d("123",""+userEntity.toString());
                 //更新逻辑
-                tempName.set(userEntity.getPhoneNumber());
+//                tempName.set(userEntity.getPhoneNumber());
             }
         });
     }
