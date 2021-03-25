@@ -1,0 +1,35 @@
+package com.zy.zg6;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import com.zy.zg6.databinding.BaWei;
+import com.zy.zg6.entity.ReqLoginUser;
+
+public class LoginActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_login);
+        BaWei viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        viewDataBinding.setDataSource(new ReqLoginUser());
+        viewDataBinding.setEventHandler(new LoginHandler());
+    }
+
+
+    public void onSecondClick(View view) {
+//       try {
+//           int a=0;
+//           int b=12/a;
+//       }catch (Exception e){
+//
+//       }
+        startActivity(new Intent(this,DoubleBindActivity.class));
+    }
+}

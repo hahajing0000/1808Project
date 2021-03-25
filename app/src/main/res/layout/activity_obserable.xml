@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+   >
+    <data>
+        <variable
+            name="person"
+            type="com.zy.zg6.entity.PersonEntity" />
+        <variable
+            name="observableperson"
+            type="com.zy.zg6.entity.ObservablePersonEntity" />
+        <variable
+            name="owner"
+            type="com.zy.zg6.ObserableActivity" />
+        <variable
+            name="user"
+            type="com.zy.zg6.entity.UserEntity" />
+        <variable
+            name="inttest"
+            type="java.lang.Integer" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:paddingLeft="@{person.age}"
+            android:text="@{String.valueOf(person.age)}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></EditText>
+        <EditText
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></EditText>
+        <EditText
+            android:id="@+id/et_test"
+            android:background="@{10}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></EditText>
+        <EditText
+            android:text="@{observableperson.name}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></EditText>
+        <Button
+            android:text="Submit"
+            android:onClick="@{()->person.addData(person)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></Button>
+
+    </LinearLayout>
+
+</layout>

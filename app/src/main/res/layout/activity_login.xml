@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+   >
+    <data class="BaWei">
+        <variable
+            name="dataSource"
+            type="com.zy.zg6.entity.ReqLoginUser" />
+        <variable
+            name="eventHandler"
+            type="com.zy.zg6.LoginHandler" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入电话号码"
+            android:text="@={dataSource.phoneNumber}"></EditText>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+            android:text="@={dataSource.pwd}"
+            android:inputType="textPassword"></EditText>
+        <Button
+            android:onClick="@{()->eventHandler.loginOnClick(dataSource)}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            ></Button>
+
+        <Button
+            android:onClick="onSecondClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></Button>
+    </LinearLayout>
+</layout>

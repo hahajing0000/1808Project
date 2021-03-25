@@ -1,4 +1,4 @@
-package com.zy.zg6;
+package com.zy.zg6.entity;
 
 import android.util.Log;
 
@@ -37,5 +37,14 @@ public class UserEntity {
 
     public void userOnClick(UserEntity entity){
         Log.d("123","DataBinding Event onTouch.."+entity.getName());
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

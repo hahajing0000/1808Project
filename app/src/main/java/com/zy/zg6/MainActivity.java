@@ -2,20 +2,16 @@ package com.zy.zg6;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zy.zg6.databinding.ActivityMainBinding;
+import com.zy.zg6.entity.UserEntity;
 import com.zy.zg6.observer.MyObserver;
 import com.zy.zg6.observer.MyService;
 import com.zy.zg6.observer.ObserverManager;
