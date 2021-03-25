@@ -10,20 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LiveDataActivity">
+        <activity android:name=".view.ViewModelActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LifecycleActivity">
+        <activity android:name=".view.LiveDataActivity">
 
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".DoubleBindActivity" />
-        <activity android:name=".ObserableActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".view.LifecycleActivity"></activity>
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.DoubleBindActivity" />
+        <activity android:name=".view.ObserableActivity" />
+        <activity android:name=".view.MainActivity" />
 
         <service
             android:name=".observer.MyService"

@@ -1,13 +1,14 @@
-package com.zy.zg6;
+package com.zy.zg6.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.zy.zg6.LoginHandler;
+import com.zy.zg6.R;
 import com.zy.zg6.databinding.BaWei;
 import com.zy.zg6.entity.ReqLoginUser;
 

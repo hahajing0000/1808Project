@@ -1,5 +1,6 @@
-package com.zy.zg6;
+package com.zy.zg6.view;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
@@ -9,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
+import com.zy.zg6.R;
 import com.zy.zg6.entity.UserEntity;
 
 public class LiveDataActivity extends AppCompatActivity {
@@ -18,6 +20,8 @@ public class LiveDataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_data);
+
+
 
         liveData.observe(this, new Observer<UserEntity>() {
             @Override
@@ -42,4 +46,18 @@ public class LiveDataActivity extends AppCompatActivity {
             }
         },5000);
     }
+
+//
+//    @Override
+//    protected void onSaveInstanceState(@NonNull Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//
+//        outState.putString("name",txt.getText().toString());
+//    }
+
+//    @Override
+//    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        txt.setText(savedInstanceState.getString("name"));
+//    }
 }

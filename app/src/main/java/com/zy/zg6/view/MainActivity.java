@@ -1,4 +1,4 @@
-package com.zy.zg6;
+package com.zy.zg6.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -10,6 +10,7 @@ import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.zy.zg6.R;
 import com.zy.zg6.databinding.ActivityMainBinding;
 import com.zy.zg6.entity.UserEntity;
 import com.zy.zg6.observer.MyObserver;

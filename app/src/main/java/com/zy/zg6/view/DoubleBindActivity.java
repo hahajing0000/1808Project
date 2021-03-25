@@ -1,4 +1,4 @@
-package com.zy.zg6;
+package com.zy.zg6.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -7,6 +7,7 @@ import androidx.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.zy.zg6.R;
 import com.zy.zg6.databinding.ActivityDoubleBindBinding;
 import com.zy.zg6.entity.PersonEntity;
 

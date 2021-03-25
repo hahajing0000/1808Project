@@ -12,7 +12,7 @@
             type="com.zy.zg6.entity.ObservablePersonEntity" />
         <variable
             name="owner"
-            type="com.zy.zg6.ObserableActivity" />
+            type="com.zy.zg6.view.ObserableActivity" />
         <variable
             name="user"
             type="com.zy.zg6.entity.UserEntity" />

@@ -2,28 +2,26 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    >
-
-    <data>
+   >
+    <data class="MineViewModel">
+        <variable
+            name="viewmodel"
+            type="com.zy.zg6.viewmodel.MyViewModel" />
         <variable
             name="source"
-            type="com.zy.zg6.entity.PersonEntity" />
-        <variable
-            name="owner"
-            type="com.zy.zg6.view.DoubleBindActivity" />
+            type="com.zy.zg6.view.ViewModelActivity" />
     </data>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
         <EditText
+            android:text="@{source.tempName}"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={source.name}"></EditText>
+            android:layout_height="wrap_content"></EditText>
         <Button
-            android:onClick="@{()->owner.onClick()}"
-            android:text="双向数据绑定测试"
+            android:onClick="@{()->viewmodel.testOnClick()}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Button>
     </LinearLayout>

@@ -1,4 +1,4 @@
-package com.zy.zg6;
+package com.zy.zg6.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.zy.zg6.R;
 import com.zy.zg6.databinding.ActivityObserableBinding;
 import com.zy.zg6.entity.ObservablePersonEntity;
 import com.zy.zg6.entity.PersonEntity;
