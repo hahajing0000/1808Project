@@ -44,13 +44,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Button>
 
-        <com.zy.zg6.CustomView
+        <com.zy.zg6.other.CustomView
             android:padding="10dp"
             android:background="@color/colorPrimaryDark"
             xiaoming:customtype="0"
             xiaoming:customcolor="@color/colorAccent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></com.zy.zg6.CustomView>
+            android:layout_height="match_parent"></com.zy.zg6.other.CustomView>
     </LinearLayout>
 
 

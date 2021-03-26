@@ -1,4 +1,4 @@
-package com.zy.zg6;
+package com.zy.zg6.other;
 
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;

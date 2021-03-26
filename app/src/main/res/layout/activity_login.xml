@@ -9,7 +9,7 @@
             type="com.zy.zg6.entity.ReqLoginUser" />
         <variable
             name="eventHandler"
-            type="com.zy.zg6.LoginHandler" />
+            type="com.zy.zg6.other.LoginHandler" />
     </data>
 
     <LinearLayout

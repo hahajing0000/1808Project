@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
 
+def dependencie=rootProject.ext.dependencies;
+def version=rootProject.ext.dependenciesVersion;
+
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion version.compileSdkVersion
+    buildToolsVersion version.buildToolsVersion
 
     defaultConfig {
         applicationId "com.zy.zg6"

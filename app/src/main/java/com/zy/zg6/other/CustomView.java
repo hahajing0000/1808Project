@@ -1,4 +1,4 @@
-package com.zy.zg6;
+package com.zy.zg6.other;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.zy.zg6.R;
 
 import androidx.annotation.Nullable;
 
@@ -31,7 +33,7 @@ public class CustomView extends View {
         super(context, attrs);
 
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.CustomView);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomView);
         customType = typedArray.getInteger(R.styleable.CustomView_customtype, 0);
         customColor = typedArray.getColor(R.styleable.CustomView_customcolor, Color.RED);
         initPaint();
