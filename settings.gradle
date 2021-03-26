@@ -1,2 +1,9 @@
+include ':Log'
+include ':ImgLoader'
+include ':Store'
+include ':Net'
+include ':Core'
+include ':Common'
+include ':Resource'
 include ':app'
 rootProject.name = "1808ZG6"

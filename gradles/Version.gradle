@@ -32,5 +32,7 @@ ext{
             autodisposearchcomponents:"1.0.0-RC3",
             autodispose:"1.0.0-RC3",
 
+            room_version : "2.2.6"
+
     ]
 }

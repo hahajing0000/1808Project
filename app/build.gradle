@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-def dependencie=rootProject.ext.dependencies;
+def dep=rootProject.ext.dependencies;
 def version=rootProject.ext.dependenciesVersion;
 
 android {
@@ -36,24 +36,18 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation dep.appcompat
+    implementation dep.constraintlayout
+    implementation project(path: ':Resource')
+    implementation project(path: ':Common')
+    implementation project(path: ':Log')
+    implementation project(path: ':Core')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 
-    def room_version = "2.2.6"
+    implementation dep.roomruntime
+    annotationProcessor dep.roomcompiler
 
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
-
-//    // optional - RxJava support for Room
-//    implementation "androidx.room:room-rxjava2:$room_version"
-//
-//    // optional - Guava support for Room, including Optional and ListenableFuture
-//    implementation "androidx.room:room-guava:$room_version"
-//
-//    // optional - Test helpers
-//    testImplementation "androidx.room:room-testing:$room_version"
 }
