@@ -3,12 +3,12 @@ package com.zy.zg6.mvvmdemo.viewmodel;
 import android.util.Log;
 
 import com.zy.core.BaseViewModel;
-import com.zy.zg6.mvvmdemo.model.entity.BaseRespEntity;
-import com.zy.zg6.mvvmdemo.model.entity.UserLoginEntity;
+import com.zy.zg6.mvvmdemo.model.service.entity.BaseRespEntity;
+import com.zy.zg6.mvvmdemo.model.service.entity.LoginEntity;
+import com.zy.zg6.mvvmdemo.model.service.entity.UserLoginEntity;
 import com.zy.zg6.mvvmdemo.repository.UserLoginRepository;
 
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 /**
@@ -16,7 +16,7 @@ import androidx.lifecycle.Observer;
  * @date:2021/3/26
  */
 public class UserLoginViewModel extends BaseViewModel<UserLoginRepository> {
-    public UserLoginEntity reqUserEntity=new UserLoginEntity();
+    public LoginEntity reqUserEntity=new LoginEntity();
     public UserLoginViewModel(LifecycleOwner _owner) {
         super(_owner);
     }
@@ -36,10 +36,10 @@ public class UserLoginViewModel extends BaseViewModel<UserLoginRepository> {
 
     }
 
-    public void loginCmd(UserLoginEntity entity){
-        mRepository.login(entity).observe(mOwner, new Observer<BaseRespEntity<UserLoginEntity>>() {
+    public void loginCmd(LoginEntity entity){
+        mRepository.login(entity).observe(mOwner, new Observer<BaseRespEntity<LoginEntity>>() {
             @Override
-            public void onChanged(BaseRespEntity<UserLoginEntity> result) {
+            public void onChanged(BaseRespEntity<LoginEntity> result) {
                 Log.d("123","result->"+result.toString());
             }
         });

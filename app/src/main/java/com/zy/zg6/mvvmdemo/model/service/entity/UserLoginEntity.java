@@ -1,4 +1,4 @@
-package com.zy.zg6.mvvmdemo.model.entity;
+package com.zy.zg6.mvvmdemo.model.service.entity;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;

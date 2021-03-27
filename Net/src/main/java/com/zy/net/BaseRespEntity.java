@@ -1,8 +1,8 @@
-package com.zy.zg6.mvvmdemo.model.entity;
+package com.zy.net;
 
 /**
  * @author:zhangyue
- * @date:2021/3/26
+ * @date:2021/3/27
  */
 public class BaseRespEntity<T> {
     private int code;
@@ -31,14 +31,5 @@ public class BaseRespEntity<T> {
 
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseRespEntity{" +
-                "code=" + code +
-                ", data=" + data +
-                ", msg='" + msg + '\'' +
-                '}';
     }
 }

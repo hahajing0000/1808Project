@@ -1,14 +1,14 @@
 package com.zy.zg6.mvvmdemo.model;
 
-import android.os.SystemClock;
-
-import com.zy.core.BaseRepository;
 import com.zy.core.IModel;
-import com.zy.zg6.mvvmdemo.model.entity.BaseRespEntity;
-import com.zy.zg6.mvvmdemo.model.entity.UserLoginEntity;
+import com.zy.net.NetTools;
+import com.zy.zg6.mvvmdemo.model.service.api.LoginApi;
+import com.zy.zg6.mvvmdemo.model.service.entity.BaseRespEntity;
+import com.zy.zg6.mvvmdemo.model.service.entity.LoginEntity;
+import com.zy.zg6.mvvmdemo.model.service.entity.UserLoginEntity;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
+import retrofit2.Retrofit;
 
 /**
  * @author:zhangyue
@@ -16,13 +16,8 @@ import androidx.lifecycle.MutableLiveData;
  */
 public class UserLoginModel implements IModel {
 
-    public LiveData<BaseRespEntity<UserLoginEntity>> login(UserLoginEntity entity){
-        SystemClock.sleep(500);
-        MutableLiveData<BaseRespEntity<UserLoginEntity>> result=new MutableLiveData<>();
-        BaseRespEntity<UserLoginEntity> data=new BaseRespEntity<>();
-        data.setCode(200);
-        data.setData(new UserLoginEntity(1,"小明","123456"));
-        result.setValue(data);
-        return result;
+    public LiveData<BaseRespEntity<LoginEntity>> login(LoginEntity entity){
+        return NetTools.getInstance().create(LoginApi.class);
+
     }
 }
