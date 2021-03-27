@@ -25,12 +25,14 @@ public class LiveDataCallAdapterFactory extends CallAdapter.Factory {
     public CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
         Class<?> rawType=  getRawType(returnType);
         if (rawType != LiveData.class ){
-            throw new IllegalStateException("not LiveData type...");
+//            throw new IllegalStateException("not LiveData type...");
+            return null;
         }
         Type parameterUpperBound = getParameterUpperBound(0, (ParameterizedType)returnType);
-        if (parameterUpperBound != BaseRespEntity.class){
+        Class<?> rawObservableType = getRawType(parameterUpperBound);
+        if (rawObservableType != BaseRespEntity.class){
             throw new IllegalArgumentException("parameter type is wrong...");
         }
-        return new LiveDataCallAdapter<>(parameterUpperBound);
+        return new LiveDataCallAdapter<>(rawObservableType);
     }
 }

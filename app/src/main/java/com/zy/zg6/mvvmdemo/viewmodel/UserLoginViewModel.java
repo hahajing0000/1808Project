@@ -3,9 +3,8 @@ package com.zy.zg6.mvvmdemo.viewmodel;
 import android.util.Log;
 
 import com.zy.core.BaseViewModel;
-import com.zy.zg6.mvvmdemo.model.service.entity.BaseRespEntity;
+import com.zy.net.BaseRespEntity;
 import com.zy.zg6.mvvmdemo.model.service.entity.LoginEntity;
-import com.zy.zg6.mvvmdemo.model.service.entity.UserLoginEntity;
 import com.zy.zg6.mvvmdemo.repository.UserLoginRepository;
 
 import androidx.lifecycle.LifecycleOwner;

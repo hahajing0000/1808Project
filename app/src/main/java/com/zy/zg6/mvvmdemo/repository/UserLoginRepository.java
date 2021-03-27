@@ -1,10 +1,9 @@
 package com.zy.zg6.mvvmdemo.repository;
 
 import com.zy.core.BaseRepository;
+import com.zy.net.BaseRespEntity;
 import com.zy.zg6.mvvmdemo.model.UserLoginModel;
-import com.zy.zg6.mvvmdemo.model.service.entity.BaseRespEntity;
 import com.zy.zg6.mvvmdemo.model.service.entity.LoginEntity;
-import com.zy.zg6.mvvmdemo.model.service.entity.UserLoginEntity;
 
 import androidx.lifecycle.LiveData;
 
