@@ -5,6 +5,11 @@ import android.app.Application;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.zy.log.LogLevel;
+import com.zy.log.LogType;
+import com.zy.log.ZLog;
+import com.zy.log.ZLogManager;
+
 import java.util.Stack;
 
 import androidx.annotation.NonNull;
@@ -21,6 +26,17 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        /**
+         * Log框架的初始化
+         */
+        ZLog zlog = new ZLog.Builder()
+                .setLogType(LogType.LOGCAT)
+                .setLevel(LogLevel.WARNNING)
+                .setTag("123")
+                .build();
+
+        ZLogManager.getInstance().init(zlog);
 
 //        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
 //            @Override

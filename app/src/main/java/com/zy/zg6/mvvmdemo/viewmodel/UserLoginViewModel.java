@@ -3,6 +3,7 @@ package com.zy.zg6.mvvmdemo.viewmodel;
 import android.util.Log;
 
 import com.zy.core.BaseViewModel;
+import com.zy.log.ZLogManager;
 import com.zy.net.BaseRespEntity;
 import com.zy.zg6.mvvmdemo.model.service.entity.LoginEntity;
 import com.zy.zg6.mvvmdemo.repository.UserLoginRepository;
@@ -36,10 +37,12 @@ public class UserLoginViewModel extends BaseViewModel<UserLoginRepository> {
     }
 
     public void loginCmd(LoginEntity entity){
+        ZLogManager.getInstance().w("我是一条测试的Log");
         mRepository.login(entity).observe(mOwner, new Observer<BaseRespEntity<LoginEntity>>() {
             @Override
             public void onChanged(BaseRespEntity<LoginEntity> result) {
-                Log.d("123","result->"+result.toString());
+
+                ZLogManager.getInstance().d("result->"+result.toString());
             }
         });
 

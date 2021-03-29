@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.zy.log.LogLevel;
+import com.zy.log.LogType;
+import com.zy.log.ZLog;
+import com.zy.log.ZLogManager;
 import com.zy.zg6.other.LoginHandler;
 import com.zy.zg6.R;
 import com.zy.zg6.databinding.BaWei;
@@ -21,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         BaWei viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         viewDataBinding.setDataSource(new ReqLoginUser());
         viewDataBinding.setEventHandler(new LoginHandler());
+
+        ZLogManager.getInstance().d("这是一条测试Log");
     }
 
 

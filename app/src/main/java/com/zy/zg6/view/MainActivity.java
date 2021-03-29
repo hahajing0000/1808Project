@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity implements MyObserver {
 
     private ViewStub vsTest;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

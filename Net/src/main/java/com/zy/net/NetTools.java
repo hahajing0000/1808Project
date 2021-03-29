@@ -14,6 +14,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.internal.cache.DiskLruCache;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -127,7 +128,6 @@ public class NetTools {
      * @return
      */
     private String requestToken() {
-
         TokenApi tokenApi = create(TokenApi.class);
         Call<TokenRespEntity> tokenService = tokenApi.getToken("password", ConstValue.AUTHCODE, "");
         try {
@@ -137,6 +137,7 @@ public class NetTools {
             }
         } catch (IOException e) {
             //ZLog.e(e.getMessage());
+
         }
         return "";
     }
