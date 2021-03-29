@@ -4,4 +4,7 @@
         <attr name="xSpace" format="integer"></attr>
         <attr name="ySpace" format="integer"></attr>
     </declare-styleable>
+    <declare-styleable name="LabelView">
+        <attr name="text" format="string"></attr>
+    </declare-styleable>
 </resources>
