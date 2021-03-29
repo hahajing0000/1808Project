@@ -10,19 +10,6 @@ import com.zy.log.impl.NetLog;
  */
 public class ZLog {
     private IZLog zlog=null;
-//    private ZLog(){
-//        zlog=new LogCatLog();
-//    }
-//
-//    private static ZLog instance=null;
-//    public static ZLog getInstance(){
-//        if (null==instance){
-//            synchronized (ZLog.class){
-//                instance=new ZLog();
-//            }
-//        }
-//        return instance;
-//    }
 
     private LogType mLogTYpe;
     private int mLogLevel;

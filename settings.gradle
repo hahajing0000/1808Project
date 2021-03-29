@@ -1,3 +1,4 @@
+include ':Wiget'
 include ':Log'
 include ':ImgLoader'
 include ':Store'
