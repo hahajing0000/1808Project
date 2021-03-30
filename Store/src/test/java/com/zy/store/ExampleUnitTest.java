@@ -1,5 +1,7 @@
 package com.zy.store;
 
+import com.zy.store.utils.LRUCacheUtils;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,5 +15,13 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+    }
+
+    @Test
+    public void testLRUCache(){
+        String testkey = (String) LRUCacheUtils.getInstance().getValue("testkey");
+        LRUCacheUtils.getInstance().putValue("testkey","hello world");
+
+        assertEquals(LRUCacheUtils.getInstance().getValue("testkey"),"hello world");
     }
 }
