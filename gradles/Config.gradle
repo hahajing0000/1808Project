@@ -29,7 +29,8 @@ ext{
             disklru:"com.jakewharton:disklrucache:$version.disklru",
 
             roomruntime : "androidx.room:room-runtime:$version.room_version",
-            roomcompiler : "androidx.room:room-compiler:$version.room_version"
+            roomcompiler : "androidx.room:room-compiler:$version.room_version",
+            material:"com.google.android.material:material:$version.material"
 
     ]
 

@@ -24,6 +24,9 @@
         <activity android:name=".view.ObserableActivity" />
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.StreamViewActivity">
+
+        </activity>
+        <activity android:name=".view.BottomNavViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

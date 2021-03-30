@@ -32,6 +32,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    repositories {
+        flatDir {
+            //第一个libs是主项目的libs,其他module的libs路径需要用逗号隔开../module名/libs
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {

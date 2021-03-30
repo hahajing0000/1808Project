@@ -35,6 +35,6 @@ dependencies {
 
     api dep.gson
     api dep.retrofit
-
+    api dep.material
 
 }
