@@ -48,7 +48,7 @@ public abstract class StorageChain<T> {
      * @param key
      * @param callback
      */
-    protected abstract void getData(String key, ResultCallback callback);
+    protected abstract void getData(String key, ResultCallback<T> callback);
 
 
     /**
