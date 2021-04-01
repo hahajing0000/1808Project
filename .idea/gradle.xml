@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/Core" />
             <option value="$PROJECT_DIR$/ImgLoader" />
             <option value="$PROJECT_DIR$/Log" />
+            <option value="$PROJECT_DIR$/MsgBus" />
             <option value="$PROJECT_DIR$/Net" />
             <option value="$PROJECT_DIR$/Resource" />
             <option value="$PROJECT_DIR$/Store" />

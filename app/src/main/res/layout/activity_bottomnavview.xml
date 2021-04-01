@@ -6,24 +6,38 @@
     android:layout_height="match_parent"
     >
 
-    <LinearLayout
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:focusable="true"-->
+<!--        android:focusableInTouchMode="true"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/bnv_nav"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/bnv_nav"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+<!--    </LinearLayout>-->
+
+<!--    <com.zy.zg6.wiget.MainBannerUI-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"></com.zy.zg6.wiget.MainBannerUI>-->
+
+    <com.zy.wiget.StateLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/bnv_nav"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
+        android:layout_height="match_parent">
+        <TextView
+            style="@style/StateErrorTxtStyle"
+            android:text="我是内容"
+            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/bnv_nav"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
-
+            android:layout_height="match_parent"></TextView>
+    </com.zy.wiget.StateLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_nav"
         android:layout_width="match_parent"

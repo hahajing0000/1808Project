@@ -32,7 +32,7 @@ public class MyApplication extends Application {
          */
         ZLog zlog = new ZLog.Builder()
                 .setLogType(LogType.LOGCAT)
-                .setLevel(LogLevel.WARNNING)
+                .setLevel(LogLevel.DEBUG)
                 .setTag("123")
                 .build();
 

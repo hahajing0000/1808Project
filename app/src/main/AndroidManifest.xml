@@ -37,6 +37,8 @@
         <service
             android:name=".observer.MyService"
             android:enabled="true" />
+
+        <service android:name=".ObservableService" android:enabled="true"></service>
     </application>
 
 </manifest>

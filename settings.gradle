@@ -1,3 +1,4 @@
+include ':MsgBus'
 include ':Wiget'
 include ':Log'
 include ':ImgLoader'

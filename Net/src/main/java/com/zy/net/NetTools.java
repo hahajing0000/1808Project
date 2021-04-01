@@ -2,6 +2,7 @@ package com.zy.net;
 
 import android.text.TextUtils;
 
+import com.zy.EventManager;
 import com.zy.net.api.TokenApi;
 import com.zy.net.entity.TokenRespEntity;
 import com.zy.net.retrofit.LiveDataCallAdapterFactory;
@@ -68,7 +69,28 @@ public class NetTools {
                 .writeTimeout(ConstValue.TIMEOUT_VALUE,TimeUnit.SECONDS)
                 .addNetworkInterceptor(createNetworkInterceptor())
                 .addInterceptor(createTokenInterceptor())
+                .addInterceptor(createHttpCodeInterceptor())
                 .build();
+    }
+
+    /**
+     * HttpCode的拦截器
+     * @return
+     */
+    private Interceptor createHttpCodeInterceptor() {
+        Interceptor interceptor=new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request();
+                Response response = chain.proceed(request);
+                /**
+                 * 发送HttpCode给观察者
+                 */
+                EventManager.getInstance().SendMsg(response.code());
+                return response;
+            }
+        };
+        return interceptor;
     }
 
     /**

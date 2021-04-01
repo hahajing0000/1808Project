@@ -7,4 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="StateErrorTxtStyle">
+        <item name="android:textSize">30sp</item>
+        <item name="color">#FF0000</item>
+    </style>
+
 </resources>

@@ -1,38 +1,42 @@
 package com.zy.zg6.view;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.zy.EventManager;
 import com.zy.core.view.BaseActivity;
-import com.zy.store.utils.LRUCacheUtils;
+import com.zy.log.ZLogManager;
+import com.zy.msgbus.MsgObserver;
+import com.zy.zg6.ObservableService;
 import com.zy.zg6.R;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.zy.zg6.observer.MyObserver;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * @author:zhangyue
  * @date:2021/3/30
  */
-public class BottomNavViewActivity extends BaseActivity {
+public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserver
     private BottomNavigationView bnvNav;
-
-
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottomnavview);
+
+//        startService(new Intent(this, ObservableService.class));
+
+//        //注册观察者
+//        EventManager.getInstance().registObserver(this);
 
 //        LinkedHashMap<String,String> map=new LinkedHashMap<>(0,0.75F,true);
 //
@@ -51,6 +55,12 @@ public class BottomNavViewActivity extends BaseActivity {
 //            Log.d("123","key = "+entry.getKey()+" value="+entry.getValue());
 //        }
 
+//        mHandler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                EventManager.getInstance().SendMsg(9001);
+//            }
+//        },3000);
 
         bnvNav = (BottomNavigationView) findViewById(R.id.bnv_nav);
 
@@ -77,5 +87,10 @@ public class BottomNavViewActivity extends BaseActivity {
         bnvNav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
     }
 
+//    private Handler mHandler=new Handler();
 
+//    @Override
+//    public void notify(Object... params) {
+//        ZLogManager.getInstance().d("接收到被观察者发送的消息，内容->"+params[0].toString());
+//    }
 }
