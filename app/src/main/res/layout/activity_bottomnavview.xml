@@ -28,15 +28,32 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"></com.zy.zg6.wiget.MainBannerUI>-->
 
+    <TextView
+        android:id="@+id/tv_bnv_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/bnv_nav"></TextView>
+
+    <Button
+        android:onClick="onTestClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/bnv_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/stateLayout"></Button>
+
     <com.zy.wiget.StateLayout
+        android:id="@+id/stateLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             style="@style/StateErrorTxtStyle"
-            android:text="我是内容"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></TextView>
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="我是内容"></TextView>
     </com.zy.wiget.StateLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_nav"

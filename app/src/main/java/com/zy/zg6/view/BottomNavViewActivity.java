@@ -4,11 +4,17 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.zy.EventManager;
+import com.zy.common.async.AsyncUtils;
 import com.zy.core.view.BaseActivity;
 import com.zy.log.ZLogManager;
 import com.zy.msgbus.MsgObserver;
@@ -26,6 +32,11 @@ import androidx.annotation.RequiresApi;
  */
 public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserver
     private BottomNavigationView bnvNav;
+    private TextView tvBnvTxt;
+
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -61,7 +72,7 @@ public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserv
 //                EventManager.getInstance().SendMsg(9001);
 //            }
 //        },3000);
-
+        tvBnvTxt = (TextView) findViewById(R.id.tv_bnv_txt);
         bnvNav = (BottomNavigationView) findViewById(R.id.bnv_nav);
 
         bnvNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -85,9 +96,37 @@ public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserv
         });
 
         bnvNav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+
+        tvBnvTxt.setOnClickListener((view)->{
+
+        });
+
     }
 
-//    private Handler mHandler=new Handler();
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        AsyncUtils.run(new Runnable() {
+            @Override
+            public void run() {
+//                    SystemClock.sleep(4000);
+                AsyncUtils.updateUI(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d("123","---》"+Thread.currentThread().getName());
+                        tvBnvTxt.setText("111");
+                    }
+                });
+            }
+        });
+    }
+
+    public void onTestClick(View view) {
+
+    }
+
+
+    //    private Handler mHandler=new Handler();
 
 //    @Override
 //    public void notify(Object... params) {
