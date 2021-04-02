@@ -18,12 +18,31 @@ import com.zy.common.async.AsyncUtils;
 import com.zy.core.view.BaseActivity;
 import com.zy.log.ZLogManager;
 import com.zy.msgbus.MsgObserver;
+import com.zy.wiget.StateLayout;
 import com.zy.zg6.ObservableService;
 import com.zy.zg6.R;
+import com.zy.zg6.designmode.BuilderMode;
+import com.zy.zg6.designmode.command.CmdManager;
+import com.zy.zg6.designmode.command.IJSCmd;
+import com.zy.zg6.designmode.command.impl.ChenCmd;
+import com.zy.zg6.designmode.command.impl.ChuCmd;
+import com.zy.zg6.designmode.command.impl.JiaCmd;
+import com.zy.zg6.designmode.command.impl.JianCmd;
+import com.zy.zg6.designmode.decorator.DecoratorTest;
+import com.zy.zg6.designmode.decorator.ITest;
+import com.zy.zg6.designmode.decorator.TestImpl;
+import com.zy.zg6.designmode.proxy.IDO;
+import com.zy.zg6.designmode.proxy.JingLian;
+import com.zy.zg6.designmode.proxy.WangPo;
 import com.zy.zg6.observer.MyObserver;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.PluralsRes;
 import androidx.annotation.RequiresApi;
 
 /**
@@ -33,8 +52,7 @@ import androidx.annotation.RequiresApi;
 public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserver
     private BottomNavigationView bnvNav;
     private TextView tvBnvTxt;
-
-
+    private StateLayout stateLayout;
 
 
 
@@ -44,6 +62,18 @@ public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserv
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottomnavview);
 
+//        IDO ido=new WangPo(new JingLian());
+//        ido.Do();
+
+//        ITest test=new DecoratorTest(new TestImpl());
+//        test.test();
+
+//        BuilderMode build = new BuilderMode.Builder()
+//                .setIsRadius(true)
+//                .setSavePath("")
+//                .build();
+//
+//        build.loadImg(this,"",null);
 //        startService(new Intent(this, ObservableService.class));
 
 //        //注册观察者
@@ -72,6 +102,31 @@ public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserv
 //                EventManager.getInstance().SendMsg(9001);
 //            }
 //        },3000);
+
+//        IDO jingLian=new JingLian();
+//        IDO wangpo= (IDO) Proxy.newProxyInstance(jingLian.getClass().getClassLoader(),jingLian.getClass().getInterfaces(),new DyamicProxy(jingLian));
+//        wangpo.Do();
+
+//        int a=10;
+//        int b =5;
+//        IJSCmd jiaCmd=new JiaCmd();
+//        IJSCmd jianCmd=new JianCmd();
+//        IJSCmd chengCmd=new ChenCmd();
+//        IJSCmd chuCmd=new ChuCmd();
+//        IJSCmd jiaCmd2=new JianCmd();
+//
+//        CmdManager cmdManager = new CmdManager();
+//        cmdManager.addCmd(jiaCmd);
+//        cmdManager.addCmd(jianCmd);
+//        cmdManager.addCmd(chengCmd);
+//        cmdManager.addCmd(chuCmd);
+//        cmdManager.addCmd(jiaCmd2);
+//
+//        cmdManager.executeCmds(a,b);
+
+
+        stateLayout = (StateLayout) findViewById(R.id.stateLayout);
+
         tvBnvTxt = (TextView) findViewById(R.id.tv_bnv_txt);
         bnvNav = (BottomNavigationView) findViewById(R.id.bnv_nav);
 
@@ -103,9 +158,14 @@ public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserv
 
     }
 
+
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
+
+        stateLayout.showMsg("Hello World",5,5);
+
         AsyncUtils.run(new Runnable() {
             @Override
             public void run() {
@@ -122,7 +182,8 @@ public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserv
     }
 
     public void onTestClick(View view) {
-
+            IDo anything=new Do2Anything();
+            anything.Do();
     }
 
 
@@ -132,4 +193,39 @@ public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserv
 //    public void notify(Object... params) {
 //        ZLogManager.getInstance().d("接收到被观察者发送的消息，内容->"+params[0].toString());
 //    }
+
+    public interface IDo{
+        void Do();
+    }
+
+    public class DoAnything implements IDo{
+        @Override
+        public void Do(){
+
+        }
+    }
+
+    public class Do2Anything implements IDo{
+
+        @Override
+        public void Do() {
+
+        }
+    }
+
+    class DyamicProxy implements InvocationHandler{
+        private Object obj;
+        public DyamicProxy(Object _obj){
+            obj=_obj;
+        }
+
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            System.out.println("方法执行前");
+
+            Object result= method.invoke(obj,args);
+            System.out.println("方法执行后");
+            return result;
+        }
+    }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/fl_tip"
+        android:visibility="gone"
+        android:background="#009999"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_25">
+        <TextView
+            android:id="@+id/tv_state_msg"
+            android:textColor="#FFF"
+            android:text="我是消息"
+            android:textSize="@dimen/sp_20"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"></TextView>
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/fl_state_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+</LinearLayout>
