@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.zy.EventManager;
 import com.zy.net.api.TokenApi;
 import com.zy.net.entity.TokenRespEntity;
+import com.zy.net.retrofit.CustomGsonConverterFactory;
 import com.zy.net.retrofit.LiveDataCallAdapterFactory;
 import com.zy.net.utils.ConstValue;
 

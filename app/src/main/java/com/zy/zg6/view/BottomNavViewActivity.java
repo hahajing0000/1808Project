@@ -13,11 +13,15 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 import com.zy.EventManager;
 import com.zy.common.async.AsyncUtils;
 import com.zy.core.view.BaseActivity;
 import com.zy.log.ZLogManager;
 import com.zy.msgbus.MsgObserver;
+import com.zy.net.BaseRespEntity;
+import com.zy.net.NetTools;
 import com.zy.wiget.StateLayout;
 import com.zy.zg6.ObservableService;
 import com.zy.zg6.R;
@@ -34,16 +38,25 @@ import com.zy.zg6.designmode.decorator.TestImpl;
 import com.zy.zg6.designmode.proxy.IDO;
 import com.zy.zg6.designmode.proxy.JingLian;
 import com.zy.zg6.designmode.proxy.WangPo;
+import com.zy.zg6.news.NewsApi;
+import com.zy.zg6.news.NewsEntity;
 import com.zy.zg6.observer.MyObserver;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.PluralsRes;
 import androidx.annotation.RequiresApi;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author:zhangyue
@@ -179,6 +192,19 @@ public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserv
                 });
             }
         });
+
+        NewsApi api = NetTools.getInstance().create(NewsApi.class);
+        LiveData<BaseRespEntity<List<NewsEntity>>> list = api.getList(1, 0, 10);
+        list.observe(this, new Observer<BaseRespEntity<List<NewsEntity>>>() {
+            @Override
+            public void onChanged(BaseRespEntity<List<NewsEntity>> listBaseRespEntity) {
+                List<NewsEntity> data = listBaseRespEntity.getData(NewsEntity.class);
+                for (NewsEntity entity:data){
+                    Log.d("123",entity.getDescription());
+                }
+            }
+        });
+
     }
 
     public void onTestClick(View view) {
