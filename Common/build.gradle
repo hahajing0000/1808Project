@@ -37,4 +37,8 @@ dependencies {
     api dep.retrofit
     api dep.material
 
+    api dep.rxjava
+    api dep.rxandroid
+    
+
 }

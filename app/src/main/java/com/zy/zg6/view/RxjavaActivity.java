@@ -1,0 +1,219 @@
+package com.zy.zg6.view;
+
+import androidx.appcompat.app.AppCompatActivity;
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
+import io.reactivex.FlowableSubscriber;
+import io.reactivex.Notification;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+
+import android.os.Bundle;
+import android.widget.Button;
+
+import com.zy.log.ZLog;
+import com.zy.log.ZLogManager;
+import com.zy.zg6.R;
+import com.zy.zg6.entity.UserEntity;
+
+import org.reactivestreams.Subscription;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class RxjavaActivity extends AppCompatActivity {
+    private Button btnRxjavaTest1;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_rxjava);
+
+        btnRxjavaTest1 = (Button) findViewById(R.id.btn_rxjava_Test1);
+
+        btnRxjavaTest1.setOnClickListener((view)->{
+//            Observable.create(new ObservableOnSubscribe<String>() {
+//                @Override
+//                public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+//                    emitter.onNext("1");
+//                    emitter.onNext("2");
+//                    emitter.onError(new NullPointerException("null"));
+//                    emitter.onComplete();
+//
+////                    emitter.onError(new NullPointerException("null"));
+//                }
+//            }).subscribe(new Observer<String>() {
+//                @Override
+//                public void onSubscribe(Disposable d) {
+//                    ZLogManager.getInstance().d("onsubscribe");
+//
+//                }
+//
+//                @Override
+//                public void onNext(String s) {
+//                    ZLogManager.getInstance().d("s="+s);
+//                }
+//
+//                @Override
+//                public void onError(Throwable e) {
+//                    ZLogManager.getInstance().e("e="+e.getLocalizedMessage());
+//                }
+//
+//                @Override
+//                public void onComplete() {
+//                    ZLogManager.getInstance().d("complete");
+//                }
+//            });
+
+//            Flowable.create(new FlowableOnSubscribe<String>() {
+//                @Override
+//                public void subscribe(FlowableEmitter<String> emitter) throws Exception {
+//                    emitter.onNext("11");
+//                    emitter.onNext("22");
+//                    emitter.onComplete();
+//                }
+//            }, BackpressureStrategy.LATEST)
+//                    .subscribe(new FlowableSubscriber<String>() {
+//                @Override
+//                public void onSubscribe(Subscription s) {
+//                    s.request(Integer.MAX_VALUE);
+//
+//                    ZLogManager.getInstance().d("subscribe");
+//                }
+//
+//                @Override
+//                public void onNext(String s) {
+//                    ZLogManager.getInstance().d("s="+s);
+//                }
+//
+//                @Override
+//                public void onError(Throwable t) {
+//                    ZLogManager.getInstance().e("error->"+t.getLocalizedMessage());
+//                }
+//
+//                @Override
+//                public void onComplete() {
+//                    ZLogManager.getInstance().d("complete");
+//                }
+//            });
+
+//            Observable.just("1","2").subscribe(new Consumer<String>() {
+//                @Override
+//                public void accept(String s) throws Exception {
+//                    ZLogManager.getInstance().d("s="+s);
+//                }
+//            });
+
+//            Observable.timer(2, TimeUnit.SECONDS)
+//                    .subscribe(new Consumer<Long>() {
+//                        @Override
+//                        public void accept(Long aLong) throws Exception {
+//                            ZLogManager.getInstance().d(""+aLong);
+//                        }
+//                    });
+//            Observable.interval(1,TimeUnit.SECONDS)
+//                    .subscribe(new Consumer<Long>() {
+//                        @Override
+//                        public void accept(Long aLong) throws Exception {
+//                            ZLogManager.getInstance().d(""+aLong);
+//                        }
+//                    });
+
+//            Observable.intervalRange(3,10,2,1,TimeUnit.SECONDS)
+//                    .subscribe(new Consumer<Long>() {
+//                        @Override
+//                        public void accept(Long aLong) throws Exception {
+//                            ZLogManager.getInstance().d(""+aLong);
+//                        }
+//                    });
+
+//            Observable.create(new ObservableOnSubscribe<UserEntity>() {
+//                @Override
+//                public void subscribe(ObservableEmitter<UserEntity> emitter) throws Exception {
+//                    emitter.onNext(new UserEntity());
+//                }
+//            }).map(new Function<UserEntity, String>() {
+//                @Override
+//                public String apply(UserEntity s) throws Exception {
+//                    return s.getName();
+//                }
+//            }).subscribe(new Consumer<String>() {
+//                @Override
+//                public void accept(String integer) throws Exception {
+//                    ZLogManager.getInstance().d(""+integer);
+//                }
+//            });
+
+//            List<String> list=new ArrayList<>();
+//            for (int i=0;i<20;i++){
+//                list.add(""+i);
+//            }
+//
+//            Observable.fromIterable(list).buffer(2)
+//                    .subscribe(new Consumer<List<String>>() {
+//                        @Override
+//                        public void accept(List<String> strings) throws Exception {
+//                            for (int n=0;n<strings.size();n++){
+//                                ZLogManager.getInstance().d(""+strings.get(n));
+//                            }
+//                            ZLogManager.getInstance().d("--------------------------");
+//                        }
+//                    });
+
+//            Observable<String> stringObservable = Observable.just("1", "2", "3");
+//            Observable<Integer> integerObservable=Observable.just(11,22,33);
+//
+//            Observable.concat(stringObservable,integerObservable).subscribe(new Consumer<Object>() {
+//                @Override
+//                public void accept(Object object) throws Exception {
+//                    ZLogManager.getInstance().d(""+object.toString());
+//                }
+//            });
+
+            Observable.create(new ObservableOnSubscribe<String>() {
+                @Override
+                public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                    emitter.onNext("11");
+                    emitter.onNext("22");
+                    emitter.onComplete();
+                }
+            }).doOnEach(new Consumer<Notification<String>>() {
+                @Override
+                public void accept(Notification<String> stringNotification) throws Exception {
+                    ZLogManager.getInstance().d("doOnEach is execute...");
+                }
+            }).doOnNext(new Consumer<String>() {
+                @Override
+                public void accept(String s) throws Exception {
+                    ZLogManager.getInstance().d("onNext before");
+                }
+            }).doAfterNext(new Consumer<String>() {
+                @Override
+                public void accept(String s) throws Exception {
+                    ZLogManager.getInstance().d("onNext after");
+                }
+            }).subscribe(new Consumer<String>() {
+                @Override
+                public void accept(String s) throws Exception {
+                    ZLogManager.getInstance().d(s);
+                }
+            });
+
+        });
+    }
+
+    int method1(){
+       return 1+2;
+    }
+}

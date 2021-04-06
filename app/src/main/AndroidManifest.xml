@@ -10,35 +10,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvvmdemo.view.UserLoginActivity">
-
-        </activity>
-        <activity android:name=".view.RoomActivity">
-
-        </activity>
-        <activity android:name=".view.ViewModelActivity"></activity>
-        <activity android:name=".view.LiveDataActivity" />
-        <activity android:name=".view.LifecycleActivity" />
-        <activity android:name=".view.LoginActivity" />
-        <activity android:name=".view.DoubleBindActivity" />
-        <activity android:name=".view.ObserableActivity" />
-        <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.StreamViewActivity">
-
-        </activity>
-        <activity android:name=".view.BottomNavViewActivity">
+        <activity android:name=".view.RxjavaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".mvvmdemo.view.UserLoginActivity"></activity>
+        <activity android:name=".view.RoomActivity"></activity>
+        <activity android:name=".view.ViewModelActivity" />
+        <activity android:name=".view.LiveDataActivity" />
+        <activity android:name=".view.LifecycleActivity" />
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.DoubleBindActivity" />
+        <activity android:name=".view.ObserableActivity" />
+        <activity android:name=".view.MainActivity" />
+        <activity android:name=".view.StreamViewActivity"></activity>
+        <activity android:name=".view.BottomNavViewActivity">
+
+        </activity>
 
         <service
             android:name=".observer.MyService"
             android:enabled="true" />
-
-        <service android:name=".ObservableService" android:enabled="true"></service>
+        <service
+            android:name=".ObservableService"
+            android:enabled="true" />
     </application>
 
 </manifest>
