@@ -44,6 +44,7 @@ public class CustomGsonConverterFactory extends Converter.Factory {
 //        Class<?> rawObservableType = getRawType(parameterUpperBound);
         TypeAdapter<?> adapter = gson.getAdapter(typeToken);
 
+
 //        Type type2=type.getClass().getGenericSuperclass();
 //        if (type2 instanceof ParameterizedType){
 //            ParameterizedType subType= (ParameterizedType) type2;

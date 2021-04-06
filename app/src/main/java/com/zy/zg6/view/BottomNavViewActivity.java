@@ -38,13 +38,16 @@ import com.zy.zg6.designmode.decorator.TestImpl;
 import com.zy.zg6.designmode.proxy.IDO;
 import com.zy.zg6.designmode.proxy.JingLian;
 import com.zy.zg6.designmode.proxy.WangPo;
+import com.zy.zg6.entity.UserEntity;
 import com.zy.zg6.news.NewsApi;
 import com.zy.zg6.news.NewsEntity;
 import com.zy.zg6.observer.MyObserver;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -176,6 +179,28 @@ public class BottomNavViewActivity extends BaseActivity  {//implements MsgObserv
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
+
+        List<Integer> list2=new ArrayList<>();
+        list2.add(10);
+        list2.add(20);
+//        list2.add("123");
+        try {
+            Method addMethod = list2.getClass().getDeclaredMethod("add",Object.class );
+            addMethod.invoke(list2, "123");
+            addMethod.invoke(list2,new UserEntity());
+            addMethod.invoke(list2,10.f);
+            addMethod.invoke(list2,100L);
+
+            for (Object object:list2){
+                Log.d("123",object.toString());
+            }
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
 
         stateLayout.showMsg("Hello World",5,5);
 

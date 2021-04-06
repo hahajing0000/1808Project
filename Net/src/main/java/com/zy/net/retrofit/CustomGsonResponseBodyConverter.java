@@ -36,6 +36,8 @@ final class CustomGsonResponseBodyConverter<T> implements Converter<ResponseBody
 
     @Override public T convert(ResponseBody value) throws IOException {
         String string = value.string();
+
+
         BaseRespEntity t = this.gson.fromJson(string,BaseRespEntity.class);
 //        if (t.getData() instanceof java.util.ArrayList){
 //            List<BaseEntity> data = (List<BaseEntity>) t.getData();
