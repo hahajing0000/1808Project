@@ -2,22 +2,40 @@ package com.zy.zg6.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.BackpressureStrategy;
+import io.reactivex.Completable;
+import io.reactivex.CompletableEmitter;
+import io.reactivex.CompletableObserver;
+import io.reactivex.CompletableOnSubscribe;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.FlowableSubscriber;
+import io.reactivex.Maybe;
+import io.reactivex.MaybeEmitter;
+import io.reactivex.MaybeObserver;
+import io.reactivex.MaybeOnSubscribe;
 import io.reactivex.Notification;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
+import io.reactivex.Single;
+import io.reactivex.SingleEmitter;
+import io.reactivex.SingleOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
+import io.reactivex.schedulers.Schedulers;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
+import com.uber.autodispose.AutoDispose;
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
 import com.zy.log.ZLog;
 import com.zy.log.ZLogManager;
 import com.zy.zg6.R;
@@ -35,6 +53,7 @@ public class RxjavaActivity extends AppCompatActivity {
 
 
 
+    @SuppressLint("AutoDispose")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -181,34 +200,165 @@ public class RxjavaActivity extends AppCompatActivity {
 //                }
 //            });
 
-            Observable.create(new ObservableOnSubscribe<String>() {
-                @Override
-                public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                    emitter.onNext("11");
-                    emitter.onNext("22");
-                    emitter.onComplete();
-                }
-            }).doOnEach(new Consumer<Notification<String>>() {
-                @Override
-                public void accept(Notification<String> stringNotification) throws Exception {
-                    ZLogManager.getInstance().d("doOnEach is execute...");
-                }
-            }).doOnNext(new Consumer<String>() {
-                @Override
-                public void accept(String s) throws Exception {
-                    ZLogManager.getInstance().d("onNext before");
-                }
-            }).doAfterNext(new Consumer<String>() {
-                @Override
-                public void accept(String s) throws Exception {
-                    ZLogManager.getInstance().d("onNext after");
-                }
-            }).subscribe(new Consumer<String>() {
-                @Override
-                public void accept(String s) throws Exception {
-                    ZLogManager.getInstance().d(s);
-                }
-            });
+//            Observable.create(new ObservableOnSubscribe<String>() {
+//                @Override
+//                public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+//                    emitter.onNext("11");
+//                    emitter.onNext("22");
+//                    emitter.onComplete();
+//                }
+//            }).doOnEach(new Consumer<Notification<String>>() {
+//                @Override
+//                public void accept(Notification<String> stringNotification) throws Exception {
+//                    ZLogManager.getInstance().d("doOnEach is execute...");
+//                }
+//            }).doOnNext(new Consumer<String>() {
+//                @Override
+//                public void accept(String s) throws Exception {
+//                    ZLogManager.getInstance().d("onNext before");
+//                }
+//            }).doAfterNext(new Consumer<String>() {
+//                @Override
+//                public void accept(String s) throws Exception {
+//                    ZLogManager.getInstance().d("onNext after");
+//                }
+//            }).subscribe(new Consumer<String>() {
+//                @Override
+//                public void accept(String s) throws Exception {
+//                    ZLogManager.getInstance().d(s);
+//                }
+//            });
+
+//            Observable
+//                    .interval(1, TimeUnit.SECONDS)
+//                    .takeUntil(Observable.timer(5, TimeUnit.SECONDS))
+//                    .subscribe(new Consumer<Long>() {
+//                        @Override
+//                        public void accept(Long aLong) throws Exception {
+//                            Log.d("123", String.valueOf(aLong));
+//                        }
+//                    });
+
+//            Observable.range(0, 10)
+//                    .takeWhile(new Predicate<Integer>() {
+//                        @Override
+//                        public boolean test(Integer integer) throws Exception {
+//                            if (integer < 6)
+//                                return true;
+//                            return false;
+//                        }
+//                    })
+//                    .subscribe(new Consumer<Integer>() {
+//                        @Override
+//                        public void accept(Integer integer) throws Exception {
+//                            Log.d("123", String.valueOf(integer));
+//                        }
+//                    });
+
+//            Observable.range(1, 5)
+//                    .elementAt(3,21)
+//                    .subscribe(new Consumer<Integer>() {
+//                        @Override
+//                        public void accept(Integer integer) throws Exception {
+//                            Log.d("123", String.valueOf(integer));
+//                        }
+//                    });
+
+//            Single.create(new SingleOnSubscribe<String>() {
+//                @Override
+//                public void subscribe(SingleEmitter<String> emitter) throws Exception {
+//                    emitter.onSuccess("");
+//                    emitter.onError(new NullPointerException());
+//                }
+//            }).subscribe(new Consumer<String>() {
+//                @Override
+//                public void accept(String s) throws Exception {
+//
+//                }
+//            });
+
+//            Completable.create(new CompletableOnSubscribe() {
+//                @Override
+//                public void subscribe(CompletableEmitter emitter) throws Exception {
+//
+//                }
+//            }).subscribe(new CompletableObserver() {
+//                @Override
+//                public void onSubscribe(Disposable d) {
+//
+//                }
+//
+//                @Override
+//                public void onComplete() {
+//
+//                }
+//
+//                @Override
+//                public void onError(Throwable e) {
+//
+//                }
+//            });
+
+//            Maybe.create(new MaybeOnSubscribe<String>() {
+//                @Override
+//                public void subscribe(MaybeEmitter<String> emitter) throws Exception {
+//
+//                }
+//            }).subscribe(new MaybeObserver<String>() {
+//                @Override
+//                public void onSubscribe(Disposable d) {
+//
+//                }
+//
+//                @Override
+//                public void onSuccess(String s) {
+//
+//                }
+//
+//                @Override
+//                public void onError(Throwable e) {
+//
+//                }
+//
+//                @Override
+//                public void onComplete() {
+//
+//                }
+//            });
+
+            Observable.interval(1,TimeUnit.SECONDS)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(this)))
+                    .subscribe(new Observer<Long>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(Long aLong) {
+                            Log.d("123", "onNext: "+aLong);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            Log.d("123", "onComplete: ");
+                        }
+                    });
+
+//            Observable.interval(1,TimeUnit.SECONDS)
+//                    .subscribe(new Consumer<Long>() {
+//                        @Override
+//                        public void accept(Long aLong) throws Exception {
+//
+//                        }
+//                    });
 
         });
     }
