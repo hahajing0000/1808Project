@@ -12,6 +12,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AIDL1" />
+            <option value="$PROJECT_DIR$/AIDL2" />
             <option value="$PROJECT_DIR$/Common" />
             <option value="$PROJECT_DIR$/Core" />
             <option value="$PROJECT_DIR$/ImgLoader" />

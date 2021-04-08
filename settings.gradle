@@ -1,3 +1,5 @@
+include ':AIDL2'
+include ':AIDL1'
 include ':MsgBus'
 include ':Wiget'
 include ':Log'

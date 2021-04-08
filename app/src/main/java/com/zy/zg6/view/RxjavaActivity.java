@@ -30,16 +30,20 @@ import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
 import com.uber.autodispose.AutoDispose;
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
+import com.zy.core.view.BaseActivity;
 import com.zy.log.ZLog;
 import com.zy.log.ZLogManager;
 import com.zy.zg6.R;
 import com.zy.zg6.entity.UserEntity;
+import com.zy.zg6.mvvmdemo.view.UserLoginActivity;
 
 import org.reactivestreams.Subscription;
 
@@ -48,10 +52,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class RxjavaActivity extends AppCompatActivity {
+public class RxjavaActivity extends BaseActivity {
     private Button btnRxjavaTest1;
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
 
+    }
 
     @SuppressLint("AutoDispose")
     @Override
@@ -326,31 +334,31 @@ public class RxjavaActivity extends AppCompatActivity {
 //                }
 //            });
 
-            Observable.interval(1,TimeUnit.SECONDS)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(this)))
-                    .subscribe(new Observer<Long>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-
-                        }
-
-                        @Override
-                        public void onNext(Long aLong) {
-                            Log.d("123", "onNext: "+aLong);
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-
-                        }
-
-                        @Override
-                        public void onComplete() {
-                            Log.d("123", "onComplete: ");
-                        }
-                    });
+//            Observable.interval(1,TimeUnit.SECONDS)
+//                    .subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(this)))
+//                    .subscribe(new Observer<Long>() {
+//                        @Override
+//                        public void onSubscribe(Disposable d) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onNext(Long aLong) {
+//                            Log.d("123", "onNext: "+aLong);
+//                        }
+//
+//                        @Override
+//                        public void onError(Throwable e) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onComplete() {
+//                            Log.d("123", "onComplete: ");
+//                        }
+//                    });
 
 //            Observable.interval(1,TimeUnit.SECONDS)
 //                    .subscribe(new Consumer<Long>() {
@@ -359,6 +367,7 @@ public class RxjavaActivity extends AppCompatActivity {
 //
 //                        }
 //                    });
+            startActivity(UserLoginActivity.class);
 
         });
     }

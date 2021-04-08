@@ -2,6 +2,8 @@ package com.zy.zg6;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,6 +16,8 @@ import java.util.Stack;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.multidex.MultiDex;
 
 /**
  * @author:zhangyue
@@ -23,10 +27,22 @@ public class MyApplication extends Application {
 
 //    Stack<Activity> activities=new Stack<>();
 
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+
+
+        MultiDex.install(base);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public void onCreate() {
         super.onCreate();
-
+//        String processName = getProcessName();
+//
+//        String processName1 = getApplicationInfo().processName;
         /**
          * Log框架的初始化
          */
